@@ -1,0 +1,82 @@
+{
+  "assignments": [
+    {
+      "assignment_id": "assignment_1",
+      "title": "Getting Started with C",
+      "description": "Viết chương trình Hello World, tính toán đơn giản",
+      "deadline": "2026-04-12T23:59:00",
+      "max_points": 10,
+      "topics": ["basic syntax", "variables", "printf"]
+    },
+    {
+      "assignment_id": "assignment_2",
+      "title": "Loops và Conditions",
+      "description": "Viết chương trình dùng for, while, if-else",
+      "deadline": "2026-04-19T23:59:00",
+      "max_points": 15,
+      "topics": ["for loop", "while loop", "if-else"]
+    },
+    {
+      "assignment_id": "assignment_3",
+      "title": "Arrays và Functions",
+      "description": "Khai báo mảng, viết hàm để xử lý mảng",
+      "deadline": "2026-04-26T23:59:00",
+      "max_points": 20,
+      "topics": ["array", "function", "parameter passing"]
+    },
+    {
+      "assignment_id": "assignment_4",
+      "title": "Pointers and Memory",
+      "description": "Làm việc với con trỏ, malloc, free",
+      "deadline": "2026-05-03T23:59:00",
+      "max_points": 20,
+      "topics": ["pointer", "memory allocation", "free"]
+    },
+    {
+      "assignment_id": "assignment_5",
+      "title": "Strings and File I/O",
+      "description": "Xử lý chuỗi, đọc/ghi file",
+      "deadline": "2026-05-10T23:59:00",
+      "max_points": 20,
+      "topics": ["string", "file operations", "buffer management"]
+    },
+    {
+      "assignment_id": "assignment_6",
+      "title": "Structs and Advanced Concepts",
+      "description": "Tạo struct, linked list, recursion",
+      "deadline": "2026-05-17T23:59:00",
+      "max_points": 15,
+      "topics": ["struct", "recursion", "data structures"]
+    }
+  ],
+
+  "assignment_deadlines": {
+    "last_day_of_week": "Saturday",
+    "deadline_time": "23:59:00",
+    "timezone": "ICT (Indochina Time)",
+    "submission_method": "GitHub Classroom",
+    "note": "Tất cả bài tập phải nộp trước 23:59 ngày Thứ 7 hàng tuần"
+  },
+
+  "penalty_rules": {
+    "on_time": {
+      "days_late": 0,
+      "penalty_percentage": 0
+    },
+    "late_1_day": {
+      "days_late": 1,
+      "penalty_percentage": 10,
+      "description": "Nộp muộn 1 ngày"
+    },
+    "late_2_3_days": {
+      "days_late": "2-3",
+      "penalty_percentage": 20,
+      "description": "Nộp muộn 2-3 ngày"
+    },
+    "late_more_3_days": {
+      "days_late": ">3",
+      "penalty_percentage": 100,
+      "description": "Nộp muộn hơn 3 ngày: 0 điểm"
+    }
+  }
+}

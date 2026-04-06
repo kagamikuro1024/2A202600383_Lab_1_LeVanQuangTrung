@@ -1,0 +1,253 @@
+"""
+SỰ KIỆN TOOLS CẦN THIẾT CHO AI TEACHING ASSISTANT
+
+Dựa trên 5 câu hỏi ngữ cảnh, dưới đây là các tools mà Agent cần:
+"""
+
+print("""
+╔════════════════════════════════════════════════════════════════════════════╗
+║  🛠️  RECOMMENDED TOOLS FOR TEACHING ASSISTANT AGENT                        ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1️⃣  SEARCH_LEARNING_MATERIAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Công dụng:
+  • Tìm kiếm tài liệu trong tai_lieu_hoc_tap.json
+  • Lấy định nghĩa, ví dụ, common mistakes
+  
+Parameter:
+  • keyword: str (e.g., "pointer", "recursion", "string", "array")
+  • include_examples: bool (default True)
+  • include_mistakes: bool (default True)
+
+Output:
+  {
+    "success": bool,
+    "topic": str,
+    "definition": str,
+    "examples": list,
+    "common_mistakes": list,
+    "resources": list
+  }
+
+Ví dụ sử dụng:
+  search_learning_material(
+    keyword="pointer",
+    include_examples=True,
+    include_mistakes=True
+  )
+  
+  → Trả về: định nghĩa "con trỏ", 2 ví dụ code, danh sách lỗi thường gặp
+  
+Xử lý các câu hỏi: #1, #3, #4
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2️⃣  GET_COURSE_POLICY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Công dụng:
+  • Lấy quy định của môn học từ quy_dinh_mon_hoc.json
+  • Trả lời câu hỏi về deadline, scoring, attendance, etc.
+
+Parameter:
+  • policy_type: str (e.g., "deadline", "scoring", "late_submission", "grading")
+
+Output:
+  {
+    "success": bool,
+    "policy_type": str,
+    "description": str,
+    "details": str
+  }
+
+Ví dụ sử dụng:
+  get_course_policy(policy_type="late_submission")
+  
+  → Trả về: "Nộp trễ 1 ngày: -10%. Trễ 2-3 ngày: -20%. Trễ >3 ngày: 0"
+
+Xử lý các câu hỏi: #2, #5
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+3️⃣  CALCULATE_GRADE_PENALTY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Công dụng:
+  • Tính điểm bị trừ do nộp trễ
+  • Tính điểm cuối cùng
+
+Parameter:
+  • original_score: int (0-100)
+  • days_late: int (số ngày nộp trễ)
+
+Output:
+  {
+    "success": bool,
+    "original_score": int,
+    "days_late": int,
+    "penalty_percentage": int,
+    "final_score": float,
+    "explanation": str
+  }
+
+Ví dụ sử dụng:
+  calculate_grade_penalty(original_score=10, days_late=2)
+  
+  → Trả về: {
+      "original_score": 10,
+      "penalty_percentage": 20,
+      "final_score": 8.0,
+      "explanation": "Nộp trễ 2-3 ngày bị trừ 20%"
+    }
+
+Xử lý các câu hỏi: #2
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+4️⃣  CREATE_CODE_EXAMPLE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Công dụng:
+  • Tạo ví dụ code minh họa (ngoài tài liệu)
+  • Tạo code "sai" vs "đúng" để so sánh
+
+Parameter:
+  • topic: str (e.g., "pointer_arithmetic", "buffer_overflow", "recursion")
+  • complexity: str ("beginner", "intermediate", "advanced")
+  • include_wrong_example: bool (default True)
+
+Output:
+  {
+    "success": bool,
+    "topic": str,
+    "right_example": {
+      "code": str,
+      "explanation": str,
+      "output": str
+    },
+    "wrong_example": {
+      "code": str,
+      "explanation": str,
+      "mistake": str
+    }
+  }
+
+Ví dụ sử dụng:
+  create_code_example(
+    topic="buffer_overflow", 
+    complexity="beginner",
+    include_wrong_example=True
+  )
+  
+  → Trả về:
+    - Ví dụ SAIIII: char buf[10]; strcpy(buf, "very long string")
+    - Ví dụ ĐÚNG: char buf[10]; strncpy(buf, "text", 9)
+
+Xử lý các câu hỏi: #1, #3, #4
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+5️⃣  CREATE_LEARNING_ROADMAP
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Công dụng:
+  • Tạo lộ trình học từ cơ bản → nâng cao
+  • Gợi ý bài tập, tài liệu cho mỗi level
+
+Parameter:
+  • topic: str (e.g., "recursion", "pointers", "arrays")
+  • target_level: str ("beginner", "intermediate", "advanced")
+  • include_assignments: bool (default True)
+
+Output:
+  {
+    "success": bool,
+    "topic": str,
+    "roadmap": [
+      {
+        "level": str,
+        "concepts": list,
+        "learning_resources": list,
+        "practice_problems": list,
+        "estimated_hours": int
+      }
+    ]
+  }
+
+Ví dụ sử dụng:
+  create_learning_roadmap(
+    topic="recursion",
+    target_level="advanced",
+    include_assignments=True
+  )
+  
+  → Trả về:
+    Level 1 (Cơ bản - 4 giờ):
+      - Concepts: Base case, Recursive case
+      - Resources: K&R Ch.4, Video YouTube
+      - Practice: Viết factorial, fibonacci
+    
+    Level 2 (Trung bình - 8 giờ):
+      - Concepts: Tree traversal, Backtracking
+      - Resources: /resources/recursion_deep_dive.pdf
+      - Practice: In cây nhị phân, N-Queens
+    
+    Level 3 (Nâng cao - 12 giờ):
+      - Concepts: Memoization, Dynamic Programming
+      - Resources: LeetCode, Codeforces
+      - Practice: TSP, Knapsack, DP
+
+Xử lý các câu hỏi: #4
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+BẢNG ÁNH XẠ TOOLS → CÂUHỎI
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Question #1 (Hiểu con trỏ):
+  1. search_learning_material(keyword="pointer") → Lấy tài liệu
+  2. create_code_example(topic="pointer_basics", complexity="beginner") → Ví dụ
+  3. create_learning_roadmap(topic="pointer", target_level="intermediate") → Roadmap
+
+Question #2 (Bị trừ bao nhiêu):
+  1. get_course_policy(policy_type="late_submission") → Quy định
+  2. calculate_grade_penalty(original_score=X, days_late=2) → Tính điểm
+  3. calculate_deadline(...) → Khi nào hết hạn
+
+Question #3 (Tránh buffer overflow):
+  1. search_learning_material(keyword="string") → Lấy tài liệu
+  2. create_code_example(topic="buffer_overflow", include_wrong_example=True) → So sánh
+  3. search_learning_material(...) → Common mistakes
+
+Question #4 (Roadmap học đệ quy):
+  1. create_learning_roadmap(topic="recursion", target_level="advanced") → Roadmap
+  2. search_learning_material(keyword="recursion") → Tài liệu cơ bản
+  3. create_code_example(topic="recursion", complexity="beginner-advanced") → Ví dụ
+
+Question #5 (Deadline + thời gian còn):
+  1. get_course_policy(policy_type="deadline") → Quy định
+  2. calculate_deadline(assignment_id="all") → Tính thời gian
+  3. get_course_policy(policy_type="late_submission") → Cảnh báo
+
+╔════════════════════════════════════════════════════════════════════════════╗
+║  📊 TỔNG KẾT: 5 TOOLS CHÍNH                                              ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+1. search_learning_material()   ← Tra cứu tài liệu (K&R, resources)
+2. get_course_policy()          ← Tra cứu quy định (deadline, scoring, etc)
+3. calculate_grade_penalty()    ← Tính toán điểm bị trừ
+4. create_code_example()         ← Tạo ví dụ minh họa
+5. create_learning_roadmap()    ← Tạo lộ trình học
+
+Mỗi tool sẽ:
+  ✅ Tra cứu data từ JSON files
+  ✅ Xử lý + tính toán
+  ✅ Tạo nội dung mới nếu cần
+  ✅ Trả về JSON response rõ ràng
+
+Độ phức tạp: Medium →  Agent sẽ cần 2-4 tool calls để trả lời một câu hỏi
+""")

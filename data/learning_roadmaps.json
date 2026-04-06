@@ -1,0 +1,301 @@
+{
+  "pointer": {
+    "topic": "pointer",
+    "levels": [
+      {
+        "level": "beginner",
+        "level_name": "Cơ Bản (4 giờ)",
+        "concepts": [
+          "Biến và địa chỉ bộ nhớ",
+          "Khai báo con trỏ: int *p",
+          "Operator & (lấy địa chỉ) và * (dereference)",
+          "Con trỏ NULL"
+        ],
+        "learning_resources": [
+          "K&R C Programming, Ch.5: Pointers and Arrays",
+          "Video: https://youtu.be/zuegQmMdy8M",
+          "/resources/pointers_basics.pdf"
+        ],
+        "practice_problems": [
+          "Viết chương trình nhoán đổi giá trị của 2 biến bằng con trỏ",
+          "Viết chương trình in địa chỉ của các biến",
+          "Hiểu mối quan hệ giữa & và *"
+        ],
+        "estimated_hours": 4
+      },
+      {
+        "level": "intermediate",
+        "level_name": "Trung Bình (8 giờ)",
+        "concepts": [
+          "Pointer arithmetic (p++, p += 2)",
+          "Mảng và con trỏ (arr == &arr[0])",
+          "Con trỏ đến con trỏ (**p)",
+          "Hàm và con trỏ (pass by reference)"
+        ],
+        "learning_resources": [
+          "K&R C Programming, Ch.5 (phần nâng cao)",
+          "/resources/pointers_arithmetic.pdf",
+          "LeetCode: Binary Search, Two Pointers problems"
+        ],
+        "practice_problems": [
+          "Tìm phần tử lớn nhất/nhỏ nhất trong mảng dùng con trỏ",
+          "Reverse mảng bằng 2 con trỏ (two-pointer technique)",
+          "Viết hàm swap(int *a, int *b)",
+          "Hiểu relationship giữa mảng và con trỏ"
+        ],
+        "estimated_hours": 8
+      },
+      {
+        "level": "advanced",
+        "level_name": "Nâng Cao (12 giờ)",
+        "concepts": [
+          "Function pointers (con trỏ đến hàm)",
+          "Dynamic memory allocation (malloc, free)",
+          "Memory leak và dangling pointer",
+          "Pointer to pointer in linked list",
+          "Pointer trong structs"
+        ],
+        "learning_resources": [
+          "K&R C Programming, Ch.5-6",
+          "/resources/memory_management.pdf",
+          "Advanced C Pointers: https://www.cprogramming.com/tutorial/function-pointers.html"
+        ],
+        "practice_problems": [
+          "Tạo linked list (node malloc/free)",
+          "Viết function callback bằng function pointers",
+          "Detect memory leak bằng valgrind",
+          "Tạo dynamic array và resize nó",
+          "Implement qsort với comparator function pointer"
+        ],
+        "estimated_hours": 12
+      }
+    ]
+  },
+
+  "recursion": {
+    "topic": "recursion",
+    "levels": [
+      {
+        "level": "beginner",
+        "level_name": "Cơ Bản (4 giờ)",
+        "concepts": [
+          "Base case (điều kiện dừng)",
+          "Recursive case (gọi lại hàm)",
+          "Call stack",
+          "Factorial, Fibonacci cơ bản"
+        ],
+        "learning_resources": [
+          "K&R C Programming, Ch.4",
+          "Video: https://youtu.be/IJDJ0kBx2LM",
+          "/resources/recursion_basics.pdf"
+        ],
+        "practice_problems": [
+          "Viết factorial(n) = n * factorial(n-1)",
+          "Viết fibonacci(n) ngây thơ",
+          "In từ 1 đến N bằng recursion",
+          "Tính tổng 1 + 2 + ... + N bằng recursion"
+        ],
+        "estimated_hours": 4
+      },
+      {
+        "level": "intermediate",
+        "level_name": "Trung Bình (8 giờ)",
+        "concepts": [
+          "Memoization (lưu kết quả đã tính)",
+          "Tree traversal (in-order, pre-order, post-order)",
+          "Backtracking",
+          "Problem solving với recursion"
+        ],
+        "learning_resources": [
+          "K&R + Recursion guide: /resources/recursion_deep_dive.pdf",
+          "LeetCode: Tree problems (226, 104, 235)",
+          "GeeksforGeeks: Backtracking tutorials"
+        ],
+        "practice_problems": [
+          "Fibonacci với memoization (tối ưu từ O(2^n) → O(n))",
+          "Inorder traverse binary tree",
+          "Generate all permutations của array",
+          "N-Queens problem (4 queens)",
+          "Tính GCD(a, b) bằng recursion"
+        ],
+        "estimated_hours": 8
+      },
+      {
+        "level": "advanced",
+        "level_name": "Nâng Cao (12 giờ)",
+        "concepts": [
+          "Dynamic Programming + Recursion",
+          "Tail recursion optimization",
+          "Mutual recursion",
+          "Advanced backtracking (Sudoku, maze)",
+          "Complexity analysis (Time & Space)"
+        ],
+        "learning_resources": [
+          "K&R + Advanced sections",
+          "/resources/dp_recursion.pdf",
+          "Codeforces Editorial",
+          "CSES Competitive Programming"
+        ],
+        "practice_problems": [
+          "Longest Increasing Subsequence (LIS) with DP",
+          "Coin Change problem (DP + recursion)",
+          "Sudoku Solver (backtracking)",
+          "Maze solver with recursion",
+          "Complexity analysis: So sánh naive vs memoization vs DP",
+          "LeetCode Hard: Recursion + DP problems"
+        ],
+        "estimated_hours": 12
+      }
+    ]
+  },
+
+  "string": {
+    "topic": "string",
+    "levels": [
+      {
+        "level": "beginner",
+        "level_name": "Cơ Bản (4 giờ)",
+        "concepts": [
+          "Chuỗi là mảng ký tự",
+          "Null terminator '\\0'",
+          "strlen() - Độ dài chuỗi",
+          "String literals vs char arrays"
+        ],
+        "learning_resources": [
+          "K&R C Programming, Ch.5",
+          "Video: https://youtu.be/3LL9SnKUlSo",
+          "/resources/string_basics.pdf"
+        ],
+        "practice_problems": [
+          "In từng ký tự của chuỗi",
+          "Tính độ dài chuỗi không dùng strlen()",
+          "In chuỗi ngược lại",
+          "Đếm số lần xuất hiện của ký tự"
+        ],
+        "estimated_hours": 4
+      },
+      {
+        "level": "intermediate",
+        "level_name": "Trung Bình (8 giờ)",
+        "concepts": [
+          "strcpy, strcat (UNSAFE - tại sao?)",
+          "strncpy, strncat (SAFE)",
+          "strcmp, strchr, strstr",
+          "Buffer overflow (lỗi bảo mật)"
+        ],
+        "learning_resources": [
+          "K&R Ch.5",
+          "/resources/string_manipulation.pdf",
+          "OWASP: Buffer Overflow"
+        ],
+        "practice_problems": [
+          "So sánh hai chuỗi bằng strcmp()",
+          "Copy chuỗi AN TOÀN bằng strncpy()",
+          "Nối chuỗi bằng strncat()",
+          "Tìm substring bằng strstr()",
+          "Hiểu và tránh buffer overflow"
+        ],
+        "estimated_hours": 8
+      },
+      {
+        "level": "advanced",
+        "level_name": "Nâng Cao (12 giờ)",
+        "concepts": [
+          "String parsing (tách chuỗi thành token)",
+          "Regular expressions (nếu dùng regex.h)",
+          "String encoding (UTF-8, ASCII)",
+          "Performance optimization"
+        ],
+        "learning_resources": [
+          "K&R + Advanced sections",
+          "/resources/string_advanced.pdf",
+          "man strtok, man strsep"
+        ],
+        "practice_problems": [
+          "Parse CSV/JSON string",
+          "Tách chuỗi bằng strtok()",
+          "String pattern matching",
+          "URL encoding/decoding",
+          "Reverse words in sentence",
+          "Palindrome checker"
+        ],
+        "estimated_hours": 12
+      }
+    ]
+  },
+
+  "array": {
+    "topic": "array",
+    "levels": [
+      {
+        "level": "beginner",
+        "level_name": "Cơ Bản (3 giờ)",
+        "concepts": [
+          "Khai báo mảng",
+          "Index bắt đầu từ 0",
+          "Truy cập phần tử",
+          "Loop qua mảng"
+        ],
+        "learning_resources": [
+          "K&R C Programming, Ch.5",
+          "Video: https://youtu.be/TRdQvXwxQWs",
+          "/resources/arrays_basics.pdf"
+        ],
+        "practice_problems": [
+          "Tạo mảng 10 phần tử, in chúng",
+          "Tìm phần tử lớn nhất/nhỏ nhất",
+          "Tính tổng của tất cả phần tử",
+          "Đảo ngược mảng"
+        ],
+        "estimated_hours": 3
+      },
+      {
+        "level": "intermediate",
+        "level_name": "Trung Bình (6 giờ)",
+        "concepts": [
+          "Mảng 2D (matrix)",
+          "Array và con trỏ (relationship)",
+          "Passing array to function",
+          "Array out of bounds"
+        ],
+        "learning_resources": [
+          "K&R Ch.5",
+          "/resources/arrays_pointers.pdf",
+          "LeetCode: Array problems (easy-medium)"
+        ],
+        "practice_problems": [
+          "Tạo matrix 3x3, nhân 2 matrix",
+          "Transpose matrix",
+          "Linear search, Binary search",
+          "Bubble sort, Selection sort",
+          "Two-pointer technique (move zeroes, remove duplicates)"
+        ],
+        "estimated_hours": 6
+      },
+      {
+        "level": "advanced",
+        "level_name": "Nâng Cao (9 giờ)",
+        "concepts": [
+          "Mảng động (malloc)",
+          "Mảng jagged (row pointers)",
+          "Advanced algorithms (merge sort, quick sort)",
+          "Data structures (heap, hash table)"
+        ],
+        "learning_resources": [
+          "K&R + Advanced sections",
+          "/resources/arrays_advanced.pdf",
+          "Codeforces, LeetCode hard"
+        ],
+        "practice_problems": [
+          "Tạo mảng động với malloc",
+          "Merge sort và quicksort",
+          "Median of sorted arrays",
+          "Majority element (Moore voting)",
+          "LeetCode Hard: Array problems",
+          "Design hash table with array"
+        ],
+        "estimated_hours": 9
+      }
+    ]
+  }
+}

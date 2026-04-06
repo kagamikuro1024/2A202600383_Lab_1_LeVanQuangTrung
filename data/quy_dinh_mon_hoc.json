@@ -1,0 +1,48 @@
+{
+  
+  "deadline": {
+    "tên": "Hạn Nộp Bài Tập",
+    "mô_tả": "Tất cả bài tập phải nộp trước 23:59 ngày cuối tuần.",
+    "chi_tiết": "Nộp qua GitHub Classroom. Không chấp nhận gửi email."
+  },
+  "scoring": {
+    "tên": "Cách Tính Điểm",
+    "mô_tả": "Tổng 100 điểm: Bài tập 40%, Kiểm tra giữa kỳ 20%, Thi cuối kỳ 40%",
+    "chi_tiết": "Bài tập: 40 điểm. Kiểm tra giữa kỳ: 20 điểm. Thi cuối kỳ: 40 điểm."
+  },
+  "format": {
+    "tên": "Định Dạng Nộp Bài",
+    "mô_tả": "Nộp file PDF hoặc code C trên GitHub.",
+    "chi_tiết": "Tên file: [TênGiàngViên]_Bài[SốBài]_[HọcSinh].pdf. Folder: /submissions/"
+  },
+  "late_submission": {
+    "tên": "Bài Nộp Trễ",
+    "mô_tả": "Nộp trễ 1 ngày: -10%. Trễ 2-3 ngày: -20%. Trễ >3 ngày: 0 điểm.",
+    "chi_tiết": "Không có ngoại lệ về hạn nộp trừ lý do y tế được chứng thực."
+  },
+  "attendance": {
+    "tên": "Điều Kiện Dự Học",
+    "mô_tả": "Bắt buộc dự ≥80% buổi học. Dưới 80% không được thi.",
+    "chi_tiết": "Điểm danh lúc 8:15 sáng. Vắng 2 buổi liên tiếp cần liên hệ giáo viên."
+  },
+  "office_hours": {
+    "tên": "Giờ Hỏi Đáp",
+    "mô_tả": "Thứ 3, Thứ 4, Thứ 5: 14:00 - 17:00 tại Phòng B304.",
+    "chi_tiết": "Đăng ký online trước: forms.gle/xxxxx. Tối đa 5 sinh viên/slot."
+  },
+  "grading": {
+    "tên": "Tiêu Chí Chấm Điểm",
+    "mô_tả": "Chính xác: 60%, Logic: 30%, Form & Doc: 10%.",
+    "chi_tiết": "Code phải compile, không có warning. Có comment giải thích."
+  },
+  "cheating": {
+    "tên": "Chính Sách Về Gian Lận",
+    "mô_tả": "Copy code: 0 điểm + báo cáo học vụ. Lần thứ 2: Loại khỏi môn.",
+    "chi_tiết": "Tất cả các bài nộp đều được kiểm tra plagiarism bằng moss.stanford.edu"
+  },
+  "resources": {
+    "tên": "Tài Liệu Tham Khảo",
+    "mô_tả": "Sách: K&R C Programming. Code examples: /resources/examples/",
+    "chi_tiết": "Tất cả tài liệu trên GitHub repo: /resources/. Cập nhật mỗi tuần."
+  }
+}

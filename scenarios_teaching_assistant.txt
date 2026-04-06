@@ -1,0 +1,82 @@
+# ==============================================================================
+# 📚 5 CÂU HỎI NGỮ CẢNH CHO AI TRỢ GIẢNG
+# ==============================================================================
+
+questions = [
+    {
+        "id": 1,
+        "question": "Tôi không hiểu con trỏ hoạt động như thế nào. Cho tôi ví dụ thực tế và giải thích chi tiết.",
+        "context": "Sinh viên đang học Chapter 5 (Pointers and Arrays) từ K&R",
+        "expected_flow": """
+        1. Agent kiểm tra tài liệu về 'pointer' từ tai_lieu_hoc_tap.json
+        2. Lấy định nghĩa, ví dụ 1, ví dụ 2
+        3. Lấy thêm common mistakes
+        4. Tạo ví dụ bổ sung (pointer arithmetic, null pointer, etc)
+        5. Gợi ý video từ tài liệu
+        6. Final Answer: Giải thích chi tiết + code examples
+        """,
+        "complexity": "Medium - Cần tra cứu + tổng hợp"
+    },
+    
+    {
+        "id": 2,
+        "question": "Tôi nộp bài muộn 2 ngày. Bài của tôi sẽ bị trừ bao nhiêu điểm?",
+        "context": "Sinh viên cần biết chính sách nộp bài trễ",
+        "expected_flow": """
+        1. Agent kiểm tra quy_dinh_mon_hoc.json → late_submission
+        2. Tìm quy tắc: Trễ 2-3 ngày: -20%
+        3. Tính toán: Nếu bài 10 điểm → 10 × 0.8 = 8 điểm
+        4. Cảnh báo: Trễ >3 ngày sẽ bị 0
+        5. Final Answer: "Bài của bạn sẽ bị trừ 20%, tức được 8/10"
+        """,
+        "complexity": "Easy - Chỉ cần tra cứu + tính toán đơn giản"
+    },
+    
+    {
+        "id": 3,
+        "question": "Làm thế nào để tôi có thể tránh buffer overflow khi dùng strings?",
+        "context": "Sinh viên gặp lỗi khi xử lý chuỗi",
+        "expected_flow": """
+        1. Agent kiểm tra 'string' từ tai_lieu_hoc_tap.json
+        2. Lấy common_mistakes → "strcpy vào buffer quá nhỏ"
+        3. Lấy ví dụ về strcpy, strcat
+        4. Tạo ví dụ sai (buffer overflow) và sai (an toàn)
+        5. Gợi ý: Dùng strncpy, strncat thay vì strcpy, strcat
+        6. Final Answer: Giải thích + code examples an toàn
+        """,
+        "complexity": "Medium - Cần tra cứu + minh họa"
+    },
+    
+    {
+        "id": 4,
+        "question": "Tôi muốn học thêm về đệ quy. Cho tôi roadmap từ cơ bản đến nâng cao.",
+        "context": "Sinh viên muốn tự học chủ động",
+        "expected_flow": """
+        1. Agent kiểm tra 'recursion' từ tai_lieu_hoc_tap.json
+        2. Lấy định nghĩa, ví dụ 1 (factorial), ví dụ 2 (fibonacci)
+        3. Lấy tính chất (ưu nhược điểm)
+        4. Tạo roadmap:
+           - Level 1 (cơ bản): factorial, fibonacci
+           - Level 2 (trung bình): tree traversal, backtracking
+           - Level 3 (nâng cao): dynamic programming + recursion
+        5. Gợi ý tài liệu: K&R Ch.4, resources/recursion_deep_dive.pdf
+        6. Tạo 3-5 bài tập tự luyện
+        """,
+        "complexity": "High - Cần tổng hợp + tạo nội dung mới"
+    },
+    
+    {
+        "id": 5,
+        "question": "Tôi có 3 bài tập chưa nộp. Deadline là bao giờ? Tôi còn bao nhiêu thời gian?",
+        "context": "Sinh viên cần quản lý thời gian nộp bài",
+        "expected_flow": """
+        1. Agent kiểm tra 'deadline' từ quy_dinh_mon_hoc.json
+        2. Lấy: "Hạn nộp trước 23:59 ngày cuối tuần"
+        3. Xác định hôm nay là thứ mấy, deadline là bao giờ
+        4. Tính số ngày còn lại
+        5. Cảnh báo: Nộp trễ sẽ bị -10% đến 0 điểm
+        6. Final Answer: "Deadline: [ngày]. Còn lại: [X] giờ [Y] phút"
+        """,
+        "complexity": "Medium - Cần tra cứu + tính toán thời gian"
+    }
+]

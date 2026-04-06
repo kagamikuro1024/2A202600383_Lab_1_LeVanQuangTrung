@@ -1,0 +1,110 @@
+{
+  "pointer": {
+    "tên": "Con Trỏ (Pointer)",
+    "định_nghĩa": "Con trỏ là một biến lưu trữ địa chỉ bộ nhớ của một biến khác.",
+    "ví_dụ_1": {
+      "code": "int x = 10;\nint *p = &x;\nprintf(\"%d\", *p);",
+      "giải_thích": "& là operator lấy địa chỉ, * là operator dereference"
+    },
+    "ví_dụ_2": {
+      "code": "int *p = malloc(sizeof(int));\n*p = 20;\nfree(p);",
+      "giải_thích": "malloc cấp phát bộ nhớ, free giải phóng"
+    },
+    "common_mistakes": [
+      "Dereference pointer NULL sẽ crash",
+      "Quên free() gây memory leak",
+      "Dereference con trỏ đã bị free (dangling pointer)"
+    ],
+    "tài_liệu": "K&R C Programming, Ch.5: Pointers and Arrays"
+  },
+
+  "loop": {
+    "tên": "Vòng Lặp (Loop)",
+    "định_nghĩa": "Vòng lặp cho phép lặp lại một khối code nhiều lần.",
+    "ví_dụ_1": {
+      "code": "for (int i = 0; i < 10; i++) { printf(\"%d \", i); }",
+      "giải_thích": "for loop: khởi tạo → điều kiện → tăng → lặp"
+    },
+    "ví_dụ_2": {
+      "code": "int i = 0; while (i < 10) { printf(\"%d \", i); i++; }",
+      "giải_thích": "while loop: kiểm tra điều kiện trước mỗi lần lặp"
+    },
+    "common_mistakes": [
+      "Vòng lặp vô tận (quên increment)",
+      "Off-by-one error (i <= 10 thay vì i < 10)"
+    ],
+    "tài_liệu": "K&R C Programming, Ch.1-2"
+  },
+
+  "recursion": {
+    "tên": "Đệ Quy (Recursion)",
+    "định_nghĩa": "Đệ quy là khi một hàm gọi chính nó để giải quyết bài toán nhỏ hơn.",
+    "ví_dụ_1": {
+      "code": "int factorial(int n) { if (n <= 1) return 1; return n * factorial(n-1); }",
+      "giải_thích": "Base case: dừng lại. Recursive case: gọi lại với n nhỏ hơn"
+    },
+    "ví_dụ_2": {
+      "code": "int fibonacci(int n) { if (n <= 1) return n; return fibonacci(n-1) + fibonacci(n-2); }",
+      "giải_thích": "Fibonacci: mỗi số = tổng 2 số trước đó"
+    },
+    "common_mistakes": [
+      "Infinite recursion (quên base case)",
+      "Stack overflow (quá nhiều recursive calls)"
+    ],
+    "tài_liệu": "K&R C Programming, Ch.4"
+  },
+
+  "array": {
+    "tên": "Mảng (Array)",
+    "định_nghĩa": "Mảng là tập hợp các phần tử cùng kiểu dữ liệu, được lưu liên tiếp trong bộ nhớ.",
+    "ví_dụ_1": {
+      "code": "int arr[5] = {10, 20, 30, 40, 50}; printf(\"%d\", arr[0]);",
+      "giải_thích": "Mảng có 5 phần tử, indices 0 đến 4"
+    },
+    "ví_dụ_2": {
+      "code": "int arr[10]; for (int i = 0; i < 10; i++) { arr[i] = i * 10; }",
+      "giải_thích": "Khởi tạo mảng trong vòng lặp"
+    },
+    "common_mistakes": [
+      "Array out of bounds access",
+      "Off-by-one error"
+    ],
+    "tài_liệu": "K&R C Programming, Ch.5"
+  },
+
+  "function": {
+    "tên": "Hàm (Function)",
+    "định_nghĩa": "Hàm là một khối code có tên, có thể tái dùng, nhận input (tham số) và trả output.",
+    "ví_dụ_1": {
+      "code": "int add(int a, int b) { return a + b; } int result = add(5, 3);",
+      "giải_thích": "int: kiểu trả về. add: tên. (int a, int b): tham số"
+    },
+    "ví_dụ_2": {
+      "code": "void print_hello() { printf(\"Hello!\\n\"); } print_hello();",
+      "giải_thích": "void = không trả về giá trị"
+    },
+    "common_mistakes": [
+      "Quên return statement",
+      "Biến local không tồn tại ngoài hàm"
+    ],
+    "tài_liệu": "K&R C Programming, Ch.4"
+  },
+
+  "string": {
+    "tên": "Chuỗi Ký Tự (String)",
+    "định_nghĩa": "Chuỗi là mảng ký tự kết thúc bằng null terminator '\\0'.",
+    "ví_dụ_1": {
+      "code": "char str[20] = \"Hello World\"; printf(\"%s\", str);",
+      "giải_thích": "String được lưu như mảng: 'H' 'e' 'l' 'l' 'o' ... '\\0'"
+    },
+    "ví_dụ_2": {
+      "code": "char str[] = \"Hi\"; printf(\"%d\", strlen(str));",
+      "giải_thích": "strlen() trả về độ dài không bao gồm '\\0'"
+    },
+    "common_mistakes": [
+      "Quên null terminator gây buffer overflow",
+      "strcpy vào buffer quá nhỏ"
+    ],
+    "tài_liệu": "K&R C Programming, Ch.5"
+  }
+}

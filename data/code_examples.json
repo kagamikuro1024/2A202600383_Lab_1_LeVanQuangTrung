@@ -1,0 +1,121 @@
+{
+  "pointer_basics": {
+    "topic": "pointer_basics",
+    "complexity": "beginner",
+    "right_example": {
+      "code": "int x = 10;\nint *p = &x;  // p lưu địa chỉ của x\nprintf(\"Giá trị x: %d\\n\", x);      // 10\nprintf(\"Địa chỉ x: %p\\n\", &x);     // 0x7ffc....\nprintf(\"Giá trị qua pointer: %d\\n\", *p);  // 10\n*p = 20;  // Thay đổi giá trị của x thông qua p\nprintf(\"Giá trị x sau thay đổi: %d\\n\", x);  // 20",
+      "explanation": "Pointer p lưu địa chỉ của biến x. Dùng & để lấy địa chỉ, * để lấy giá trị. Thay đổi *p = 20 sẽ thay đổi x.",
+      "output": "Giá trị x: 10\nĐịa chỉ x: 0x7ffc...\nGiá trị qua pointer: 10\nGiá trị x sau thay đổi: 20"
+    },
+    "wrong_example": {
+      "code": "int *p;  // Khai báo pointer chưa khởi tạo\nprintf(\"%d\", *p);  // ❌ UNDEFINED BEHAVIOR - p có thể trỏ đến bất kỳ nơi nào",
+      "explanation": "Pointer p không được khởi tạo, có thể trỏ đến địa chỉ bất kỳ trong bộ nhớ.",
+      "mistake": "Dereference pointer không khởi tạo sẽ gây crash hoặc undefined behavior"
+    }
+  },
+
+  "pointer_arithmetic": {
+    "topic": "pointer_arithmetic",
+    "complexity": "intermediate",
+    "right_example": {
+      "code": "int arr[] = {10, 20, 30, 40, 50};\nint *p = arr;  // p trỏ đến phần tử đầu tiên\nprintf(\"%d\\n\", *p);        // 10 (phần tử đầu)\nprintf(\"%d\\n\", *(p + 1));  // 20 (phần tử thứ 2)\nprintf(\"%d\\n\", *(p + 4));  // 50 (phần tử cuối)\np += 2;  // di chuyển p sau 2 phần tử\nprintf(\"%d\\n\", *p);        // 30",
+      "explanation": "p + 1 không phải cộng 1 byte, mà cộng kích thước của int (4 bytes). Con trỏ tự động tính toán offset dựa trên kiểu.",
+      "output": "10\n20\n50\n30"
+    },
+    "wrong_example": {
+      "code": "int arr[] = {10, 20, 30};\nint *p = arr;\np += 10;  // ❌ Vượt quá ranh giới mảng\nprintf(\"%d\", *p);  // ❌ Truy cập bộ nhớ không hợp lệ",
+      "explanation": "Array chỉ có 3 phần tử (indices 0-2), nhưng p += 10 trỏ đến vùng nhớ ngoài mảng.",
+      "mistake": "Buffer overflow - Truy cập bộ nhớ ngoài ranh giới của mảng"
+    }
+  },
+
+  "memory_allocation": {
+    "topic": "memory_allocation",
+    "complexity": "intermediate",
+    "right_example": {
+      "code": "int *p = (int *)malloc(5 * sizeof(int));  // Cấp phát cho 5 số nguyên\nif (p == NULL) {\n  fprintf(stderr, \"Cấp phát bộ nhớ thất bại!\\n\");\n  return 1;\n}\n\nfor (int i = 0; i < 5; i++) {\n  p[i] = (i + 1) * 10;\n}\n\nfor (int i = 0; i < 5; i++) {\n  printf(\"%d \", p[i]);\n}\n\nfree(p);  // Giải phóng bộ nhớ\np = NULL;  // Tốt nhất là set NULL sau khi free",
+      "explanation": "malloc cấp phát bộ nhớ động. Luôn kiểm tra xem malloc có thành công không. free() để giải phóng, set NULL để tránh dangling pointer.",
+      "output": "10 20 30 40 50"
+    },
+    "wrong_example": {
+      "code": "int *p = (int *)malloc(5 * sizeof(int));\n// ... sử dụng p ...\n// Quên gọi free(p)  ❌ MEMORY LEAK\n\nint *q = p;\nfree(p);  // Giải phóng p\nprintf(\"%d\", *q);  // ❌ Accessing freed memory (dangling pointer)",
+      "explanation": "Quên free() gây memory leak. Truy cập bộ nhớ đã được free() gây lỗi.",
+      "mistake": "Memory leak và use-after-free errors"
+    }
+  },
+
+  "buffer_overflow": {
+    "topic": "buffer_overflow",
+    "complexity": "beginner",
+    "right_example": {
+      "code": "char str[20];\nchar source[] = \"Hello\";\n\n// ✅ Cách 1: Dùng strncpy\nstrncpy(str, source, sizeof(str) - 1);\nstr[sizeof(str) - 1] = '\\0';  // Ensure null terminator\n\n// ✅ Cách 2: Dùng snprintf\nsnprintf(str, sizeof(str), \"%s\", source);\n\nprintf(\"%s\\n\", str);  // Safely print",
+      "explanation": "strncpy hoặc snprintf giới hạn số ký tự được copy. Luôn để dành 1 byte cho null terminator '\\0'.",
+      "output": "Hello"
+    },
+    "wrong_example": {
+      "code": "char buf[10];\nchar source[] = \"This is a very long string that exceeds buffer size\";\n\n// ❌ BUFFER OVERFLOW\nstrcpy(buf, source);  // Không check độ dài, ghi vượt quá buf[10]\n\nprintf(\"%s\", buf);  // ❌ Có thể crash, ghi đè biến khác, gây bảo mật",
+      "explanation": "strcpy copy toàn bộ source vào buf, dù buffer không đủ chỗ. Ghi dữ liệu vượt quá buf sẽ đè lên biến khác hoặc stack.",
+      "mistake": "Buffer overflow - Lỗi bảo mật nghiêm trọng nhất trong C"
+    }
+  },
+
+  "recursion_factorial": {
+    "topic": "recursion_factorial",
+    "complexity": "beginner",
+    "right_example": {
+      "code": "int factorial(int n) {\n  // Base case: điều kiện dừng\n  if (n <= 1) {\n    return 1;\n  }\n  // Recursive case: gọi lại với n nhỏ hơn\n  return n * factorial(n - 1);\n}\n\nprintf(\"%d\\n\", factorial(5));  // 5 * 4 * 3 * 2 * 1 = 120\nprintf(\"%d\\n\", factorial(0));  // 1",
+      "explanation": "Base case (n <= 1): dừng đệ quy, trả 1. Recursive case: gọi factorial(n-1), rồi nhân với n. Điều này tạo ra dãy: 5*4*3*2*1",
+      "output": "120\n1"
+    },
+    "wrong_example": {
+      "code": "int factorial(int n) {\n  // ❌ Missing base case!\n  return n * factorial(n - 1);  // Vô tận gọi đệ quy\n}\n\nfactorial(5);  // ❌ Stack overflow!",
+      "explanation": "Không có base case, hàm sẽ gọi đệ quy vô tận: 5*4*3*2*1*0*(-1)*(-2)...",
+      "mistake": "Infinite recursion - Stack overflow crash"
+    }
+  },
+
+  "recursion_fibonacci": {
+    "topic": "recursion_fibonacci",
+    "complexity": "intermediate",
+    "right_example": {
+      "code": "// ✅ Cách 1: Đơn giản nhưng chậm O(2^n)\nint fib(int n) {\n  if (n <= 1) return n;  // Base case: fib(0)=0, fib(1)=1\n  return fib(n - 1) + fib(n - 2);\n}\n\n// ✅ Cách 2: Tối ưu với memoization O(n)\nint memo[100] = {-1};\nint fib_memo(int n) {\n  if (n <= 1) return n;\n  if (memo[n] != -1) return memo[n];  // Đã tính rồi\n  memo[n] = fib_memo(n - 1) + fib_memo(n - 2);\n  return memo[n];\n}\n\nprintf(\"%d\\n\", fib(10));        // 55 (nhưng chậm)\nprintf(\"%d\\n\", fib_memo(10));  // 55 (nhanh hơn)",
+      "explanation": "Fibonacci(n) = Fibonacci(n-1) + Fibonacci(n-2). Cách 1 tính lại nhiều lần (chậm). Cách 2 lưu kết quả đã tính (nhanh).",
+      "output": "55\n55"
+    },
+    "wrong_example": {
+      "code": "int fib(int n) {\n  if (n == 0) return 0;\n  if (n == 1) return 1;\n  return fib(n - 1) + fib(n - 2);\n}\n\nfib(40);  // ❌ Quá chậm! Tính toán lại hàng triệu lần\n           // Ví dụ: fib(40) gọi fib(39) lẫn fib(38), fib(39) lại gọi fib(38) lần nữa...",
+      "explanation": "Cùng một giá trị (ví dụ fib(5)) được tính lại nhiều lần. Cây đệ quy tăng theo hàm mũ.",
+      "mistake": "Exponential time complexity - Quá chậm cho n lớn (n > 35)"
+    }
+  },
+
+  "array_indexing": {
+    "topic": "array_indexing",
+    "complexity": "beginner",
+    "right_example": {
+      "code": "int arr[5] = {10, 20, 30, 40, 50};\n\n// ✅ Truy cập đúng\nprintf(\"%d\\n\", arr[0]);  // 10 (phần tử đầu)\nprintf(\"%d\\n\", arr[4]);  // 50 (phần tử cuối, index = độ dài - 1)\n\n// ✅ Loop an toàn\nfor (int i = 0; i < 5; i++) {\n  printf(\"%d \", arr[i]);\n}",
+      "explanation": "Array index bắt đầu từ 0. Phần tử cuối cùng là arr[length-1]. Loop phải dùng i < length, không phải i <= length.",
+      "output": "10\n50\n10 20 30 40 50 "
+    },
+    "wrong_example": {
+      "code": "int arr[5] = {10, 20, 30, 40, 50};\n\n// ❌ Array out of bounds\nprintf(\"%d\\n\", arr[5]);   // ❌ Chỉ có index 0-4 mà!\nprintf(\"%d\\n\", arr[-1]);  // ❌ Index âm không hợp lệ\n\n// ❌ Loop sai\nfor (int i = 0; i <= 5; i++) {  // i <= 5 nghĩa là i = 0,1,2,3,4,5\n  printf(\"%d \", arr[i]);          // arr[5] không tồn tại!\n}",
+      "explanation": "Array[5] chỉ có 5 phần tử: indices 0-4. Truy cập arr[5] hay arr[-1] là out of bounds.",
+      "mistake": "Array out of bounds - Buffer overflow hoặc undefined behavior"
+    }
+  },
+
+  "string_functions": {
+    "topic": "string_functions",
+    "complexity": "beginner",
+    "right_example": {
+      "code": "char str1[20] = \"Hello\";\nchar str2[20];\n\n// ✅ strlen - Độ dài chuỗi\nint len = strlen(str1);\nprintf(\"Độ dài: %d\\n\", len);  // 5\n\n// ✅ strncpy - Copy an toàn\nstrncpy(str2, str1, sizeof(str2) - 1);\nstr2[sizeof(str2) - 1] = '\\0';\nprintf(\"Copy: %s\\n\", str2);  // Hello\n\n// ✅ strcmp - So sánh\nif (strcmp(str1, str2) == 0) {\n  printf(\"Hai chuỗi bằng nhau\\n\");\n}",
+      "explanation": "strlen trả về độ dài (không tính '\\0'). strncpy giới hạn số ký tự. strcmp so sánh và trả 0 nếu bằng.",
+      "output": "Độ dài: 5\nCopy: Hello\nHai chuỗi bằng nhau"
+    },
+    "wrong_example": {
+      "code": "char str1[10] = \"Hello\";\nchar str2[10];\n\n// ❌ strcpy không an toàn\nstrcpy(str2, \"This is a very long string\");  // str2 chỉ có 10 ô!\n\n// ❌ So sánh sai\nif (str1 == str2) {  // ❌ So sánh địa chỉ chứ không phải nội dung\n  printf(\"Bằng nhau\\n\");  // Luôn sai vì str1 và str2 là địa chỉ khác nhau\n}",
+      "explanation": "strcpy không check độ dài, gây buffer overflow. So sánh == chỉ so sánh địa chỉ pointer, dùng strcmp để so sánh nội dung.",
+      "mistake": "Buffer overflow + Wrong string comparison"
+    }
+  }
+}

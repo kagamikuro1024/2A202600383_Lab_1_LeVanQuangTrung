@@ -1,0 +1,131 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "last_updated": "2026-04-06",
+    "description": "Index of all learning materials, assignments, code examples, and roadmaps"
+  },
+
+  "files": {
+    "tai_lieu_hoc_tap.json": {
+      "description": "Learning materials in C programming",
+      "topics": ["pointer", "loop", "recursion", "array", "function", "string"],
+      "fields": ["tên", "định_nghĩa", "ví_dụ_1", "ví_dụ_2", "common_mistakes", "tài_liệu", "advanced_topics"]
+    },
+    "code_examples.json": {
+      "description": "Right vs Wrong code examples for each topic",
+      "topics": ["pointer_basics", "pointer_arithmetic", "memory_allocation", "buffer_overflow", "recursion_factorial", "recursion_fibonacci", "array_indexing", "string_functions"],
+      "fields": ["topic", "complexity", "right_example (code, explanation, output)", "wrong_example (code, explanation, mistake)"]
+    },
+    "learning_roadmaps.json": {
+      "description": "Learning paths for each topic (beginner → intermediate → advanced)",
+      "topics": ["pointer", "recursion", "string", "array"],
+      "levels": ["beginner", "intermediate", "advanced"],
+      "fields": ["concepts", "learning_resources", "practice_problems", "estimated_hours"]
+    },
+    "assignments.json": {
+      "description": "Assignment list with deadlines and penalty rules",
+      "assignments": ["assignment_1 to 6"],
+      "fields": ["assignment_id", "title", "deadline", "max_points", "topics", "penalty_rules"]
+    },
+    "quy_dinh_mon_hoc.json": {
+      "description": "Course regulations and policies",
+      "policies": ["deadline", "scoring", "format", "late_submission", "attendance", "office_hours", "grading", "cheating", "resources"]
+    }
+  },
+
+  "search_mapping": {
+    "pointer": {
+      "tai_lieu_hoc_tap": "pointer (với advanced_topics)",
+      "code_examples": ["pointer_basics", "pointer_arithmetic", "memory_allocation"],
+      "learning_roadmaps": "pointer (beginner-intermediate-advanced)",
+      "assignments": "assignment_4"
+    },
+    "recursion": {
+      "tai_lieu_hoc_tap": "recursion",
+      "code_examples": ["recursion_factorial", "recursion_fibonacci"],
+      "learning_roadmaps": "recursion (beginner-intermediate-advanced)",
+      "assignments": "assignment_6"
+    },
+    "string": {
+      "tai_lieu_hoc_tap": "string (với advanced_functions)",
+      "code_examples": "string_functions",
+      "learning_roadmaps": "string (beginner-intermediate-advanced)",
+      "assignments": "assignment_5"
+    },
+    "array": {
+      "tai_lieu_hoc_tap": "array (với multidimensional)",
+      "code_examples": "array_indexing",
+      "learning_roadmaps": "array (beginner-intermediate-advanced)",
+      "assignments": "assignment_3"
+    },
+    "buffer_overflow": {
+      "code_examples": "buffer_overflow",
+      "tai_lieu_hoc_tap": {
+        "string": ["common_mistakes"],
+        "pointer": ["common_mistakes"]
+      }
+    }
+  },
+
+  "tool_to_data_mapping": {
+    "search_learning_material": {
+      "primary_source": "tai_lieu_hoc_tap.json",
+      "secondary_sources": ["learning_roadmaps.json"],
+      "searchable_keywords": ["pointer", "loop", "recursion", "array", "function", "string", "buffer_overflow", "memory_allocation"]
+    },
+    "get_course_policy": {
+      "primary_source": "quy_dinh_mon_hoc.json",
+      "policy_types": ["deadline", "scoring", "format", "late_submission", "attendance", "office_hours", "grading", "cheating", "resources"]
+    },
+    "calculate_grade_penalty": {
+      "primary_source": "assignments.json (penalty_rules)",
+      "secondary_source": "quy_dinh_mon_hoc.json (late_submission)"
+    },
+    "create_code_example": {
+      "primary_source": "code_examples.json",
+      "topics": ["pointer_basics", "pointer_arithmetic", "memory_allocation", "buffer_overflow", "recursion_factorial", "recursion_fibonacci", "array_indexing", "string_functions"],
+      "complexities": ["beginner", "intermediate", "advanced"]
+    },
+    "create_learning_roadmap": {
+      "primary_source": "learning_roadmaps.json",
+      "topics": ["pointer", "recursion", "string", "array"],
+      "levels": ["beginner", "intermediate", "advanced"]
+    },
+    "calculate_deadline": {
+      "primary_source": "assignments.json (assignment_deadlines)",
+      "secondary_source": "quy_dinh_mon_hoc.json (deadline)"
+    }
+  },
+
+  "data_quality_checklist": {
+    "tai_lieu_hoc_tap.json": [
+      "✅ 6 topics covered (pointer, loop, recursion, array, function, string)",
+      "✅ Each topic has: definition, examples, common mistakes, resources",
+      "✅ Advanced topics added for deeper learning",
+      "✅ Links to external resources (K&R, YouTube, PDFs)"
+    ],
+    "code_examples.json": [
+      "✅ 8 code examples with right/wrong pairs",
+      "✅ Each example has: code, explanation, output/mistake description",
+      "✅ Complexity levels: beginner, intermediate",
+      "✅ Covers common pitfalls (buffer overflow, memory leak, undefined behavior)"
+    ],
+    "learning_roadmaps.json": [
+      "✅ 4 topics with 3-level progression",
+      "✅ Each level has: concepts, resources, practice problems, estimated hours",
+      "✅ Progressive complexity: beginner (3-4h) → intermediate (6-8h) → advanced (9-12h)",
+      "✅ Practice problems tied to real learning outcomes"
+    ],
+    "assignments.json": [
+      "✅ 6 assignments with clear topics and deadlines",
+      "✅ Penalty rules defined (0%, -10%, -20%, -100%)",
+      "✅ Points distribution visible (total 100 points)",
+      "✅ Submission method specified"
+    ],
+    "quy_dinh_mon_hoc.json": [
+      "✅ 9 policies defined (deadline, scoring, format, etc)",
+      "✅ Each policy has: name, description, chi_tiết",
+      "✅ Clear rules for late submission and cheating"
+    ]
+  }
+}
