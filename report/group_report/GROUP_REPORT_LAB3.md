@@ -4,7 +4,7 @@
 - **Thành Viên Nhóm**: Lê Ngọc Hải, Nguyễn Thành Vinh, Nguyễn Trọng Minh, Trịnh Xuân Đạt, Lê Văn Quang Trung, Hoàng Minh Nghĩa
 - **Ngày Triển Khai**: 2026-04-06
 
-link repo nhóm: https://github.com/m1nhb1ee/lab03.C401-C3
+link repo nhóm: https://github.com/m1nhb1ee/day3-2A202600226
 
 ---
 

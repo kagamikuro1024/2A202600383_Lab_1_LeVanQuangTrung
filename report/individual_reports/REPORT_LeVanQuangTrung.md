@@ -4,7 +4,7 @@
 - **Mã Sinh Viên**: 2A202600383
 - **Ngày**: 2026-04-06
 
-link repo nhóm: https://github.com/m1nhb1ee/lab03.C401-C3
+link repo nhóm: https://github.com/m1nhb1ee/day3-2A202600226
 
 ---
 
