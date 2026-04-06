@@ -4,6 +4,8 @@
 - **Mã Sinh Viên**: 2A202600383
 - **Ngày**: 2026-04-06
 
+link repo nhóm: https://github.com/m1nhb1ee/lab03.C401-C3
+
 ---
 
 ## I. Đóng Góp Kỹ Thuật (15 Điểm)
